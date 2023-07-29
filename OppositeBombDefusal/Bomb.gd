@@ -47,10 +47,7 @@ func _on_button_pressed():
 		reset()
 		setup()
 	else:
-		score -= 1
-		scoreText.text = str(score)
-		reset()
-		setup()
+		get_tree().reload_current_scene()
 
 
 func _on_timer_timeout():
@@ -60,7 +57,4 @@ func _on_timer_timeout():
 		reset()
 		setup()
 	else:
-		score -= 1
-		scoreText.text = str(score)
-		reset()
-		setup()
+		get_tree().reload_current_scene()
