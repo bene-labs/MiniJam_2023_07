@@ -1,17 +1,19 @@
 extends Control
 
+const Challenge = preload("res://scripts/Challenge.gd")
+
 var instruction : Label
 var buttonArea : ReferenceRect
 var scoreText : Label
 var timer
 
-var currentButton
+var currentChallenge : Challenge
 
-@export var buttons : Array[PackedScene]
+@export var challenges : Array[PackedScene]
+
 @export var time_limit : float
 @export var time_limit_scale : float
 
-var shouldPress : bool
 var score = 0
 
 # Called when the node enters the scene tree for the first time.
@@ -26,35 +28,32 @@ func _ready():
 	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
+	#if Input.is_key_pressed(KEY_R):
+	#	_on_challenge_failed()
 	pass
-
+	
 func reset():
-	currentButton.queue_free()
 	time_limit *= time_limit_scale
+	currentChallenge.clear()
 
 func setup():
-	currentButton = buttons[0].instantiate()
-	buttonArea.add_child(currentButton)
-	currentButton.connect("pressed", _on_button_pressed)
-	shouldPress = true if randi() % 2 == 1 else false
-	instruction.text = "Don't press the button!" if shouldPress else "Press the button!"
+	currentChallenge = challenges[randi() % challenges.size()].instantiate()
+	currentChallenge.setup(buttonArea, instruction)
+	currentChallenge.connect("completed", _on_challenge_completed)
+	currentChallenge.connect("failed", _on_challenge_failed)
 	timer.start(time_limit)
 	
-func _on_button_pressed():
-	if shouldPress:
-		score += 1
-		scoreText.text = str(score)
-		reset()
-		setup()
-	else:
-		get_tree().reload_current_scene()
-
-
 func _on_timer_timeout():
-	if not shouldPress:
-		score += 1
-		scoreText.text = str(score)
-		reset()
-		setup()
+	if currentChallenge.is_completed():
+		_on_challenge_completed()
 	else:
-		get_tree().reload_current_scene()
+		_on_challenge_failed()
+		
+func _on_challenge_failed():
+	get_tree().reload_current_scene()
+
+func _on_challenge_completed():
+	score += 1
+	scoreText.text = str(score)
+	reset()
+	setup()

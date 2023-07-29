@@ -1,9 +1,10 @@
-[gd_scene load_steps=9 format=3 uid="uid://st0x0js1gcut"]
+[gd_scene load_steps=10 format=3 uid="uid://st0x0js1gcut"]
 
 [ext_resource type="Script" path="res://game.gd" id="1_hykuy"]
 [ext_resource type="Script" path="res://Bomb.gd" id="2_t60ak"]
-[ext_resource type="PackedScene" uid="uid://c3iiln68t23k2" path="res://single_button.tscn" id="3_x2cam"]
+[ext_resource type="PackedScene" uid="uid://crj81icqlrl34" path="res://challenges/single_button_challenge.tscn" id="3_ty3vx"]
 [ext_resource type="Script" path="res://Timer.gd" id="4_aeiwt"]
+[ext_resource type="Texture2D" uid="uid://b7nipcqcmj86q" path="res://art/bomb_base_flat.png" id="4_knda7"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_f5scs"]
 font_size = 32
@@ -30,9 +31,14 @@ offset_top = 1.0
 offset_right = 1152.0
 offset_bottom = 645.0
 script = ExtResource("2_t60ak")
-buttons = Array[PackedScene]([ExtResource("3_x2cam")])
+challenges = Array[PackedScene]([ExtResource("3_ty3vx")])
 time_limit = 5.0
 time_limit_scale = 0.95
+
+[node name="Sprite2D" type="Sprite2D" parent="Bomb"]
+position = Vector2(577.5, 374.5)
+scale = Vector2(0.753695, 0.627586)
+texture = ExtResource("4_knda7")
 
 [node name="Instruction" type="Label" parent="Bomb"]
 layout_mode = 0

@@ -1,0 +1,8 @@
+[gd_scene load_steps=3 format=3 uid="uid://crj81icqlrl34"]
+
+[ext_resource type="Script" path="res://SingleButtonChallenge.gd" id="1_56qh7"]
+[ext_resource type="PackedScene" uid="uid://c3iiln68t23k2" path="res://single_button.tscn" id="2_3uwwo"]
+
+[node name="SingleButtonChallenge" type="Node2D"]
+script = ExtResource("1_56qh7")
+button = ExtResource("2_3uwwo")

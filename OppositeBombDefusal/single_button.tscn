@@ -1,4 +1,6 @@
-[gd_scene load_steps=4 format=3 uid="uid://c3iiln68t23k2"]
+[gd_scene load_steps=5 format=3 uid="uid://c3iiln68t23k2"]
+
+[ext_resource type="Script" path="res://scripts/BombButton.gd" id="1_afptp"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pckpa"]
 bg_color = Color(0.94902, 0.266667, 0.219608, 1)
@@ -15,3 +17,4 @@ offset_bottom = 49.0
 theme_override_styles/normal = SubResource("StyleBoxFlat_pckpa")
 theme_override_styles/hover = SubResource("StyleBoxFlat_rgeal")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_tsmwy")
+script = ExtResource("1_afptp")
