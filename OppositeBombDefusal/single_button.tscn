@@ -1,20 +1,24 @@
-[gd_scene load_steps=5 format=3 uid="uid://c3iiln68t23k2"]
+[gd_scene load_steps=7 format=3 uid="uid://c3iiln68t23k2"]
 
+[ext_resource type="Texture2D" uid="uid://blq8jyglwyuis" path="res://art/button_round_red_NORMAL.png" id="1_6kfx7"]
 [ext_resource type="Script" path="res://scripts/BombButton.gd" id="1_afptp"]
+[ext_resource type="Texture2D" uid="uid://cm0tatf4v06d" path="res://art/button_round_red_PRESS.png" id="2_f3hwc"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pckpa"]
-bg_color = Color(0.94902, 0.266667, 0.219608, 1)
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_3qase"]
+texture = ExtResource("1_6kfx7")
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rgeal"]
-bg_color = Color(0.870588, 0.101961, 0, 1)
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_wavkp"]
+texture = ExtResource("1_6kfx7")
+modulate_color = Color(0.768627, 0.0784314, 0.0784314, 1)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tsmwy"]
-bg_color = Color(0.627451, 0.0392157, 0.113725, 1)
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_poqb2"]
+texture = ExtResource("2_f3hwc")
+modulate_color = Color(0.768627, 0.0784314, 0.0784314, 1)
 
 [node name="SingleButton" type="Button"]
-offset_right = 57.0
-offset_bottom = 49.0
-theme_override_styles/normal = SubResource("StyleBoxFlat_pckpa")
-theme_override_styles/hover = SubResource("StyleBoxFlat_rgeal")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_tsmwy")
+offset_right = 72.0
+offset_bottom = 68.0
+theme_override_styles/normal = SubResource("StyleBoxTexture_3qase")
+theme_override_styles/hover = SubResource("StyleBoxTexture_wavkp")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_poqb2")
 script = ExtResource("1_afptp")
