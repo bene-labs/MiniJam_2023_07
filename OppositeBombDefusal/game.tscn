@@ -1,0 +1,86 @@
+[gd_scene load_steps=9 format=3 uid="uid://st0x0js1gcut"]
+
+[ext_resource type="Script" path="res://game.gd" id="1_hykuy"]
+[ext_resource type="Script" path="res://Bomb.gd" id="2_t60ak"]
+[ext_resource type="PackedScene" uid="uid://c3iiln68t23k2" path="res://single_button.tscn" id="3_x2cam"]
+[ext_resource type="Script" path="res://Timer.gd" id="4_aeiwt"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_f5scs"]
+font_size = 32
+
+[sub_resource type="LabelSettings" id="LabelSettings_h5gun"]
+font_size = 42
+
+[sub_resource type="Gradient" id="Gradient_dixx2"]
+colors = PackedColorArray(0.709804, 0.054902, 0, 1, 0.338907, 0.71, 0.3124, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_bcpea"]
+gradient = SubResource("Gradient_dixx2")
+width = 620
+height = 38
+
+[node name="Game" type="Node2D"]
+script = ExtResource("1_hykuy")
+
+[node name="Bomb" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 23.0
+offset_top = 20.0
+offset_right = 1130.0
+offset_bottom = 610.0
+script = ExtResource("2_t60ak")
+buttons = Array[PackedScene]([ExtResource("3_x2cam")])
+time_limit = 5.0
+time_limit_scale = 0.95
+
+[node name="Instruction" type="Label" parent="Bomb"]
+layout_mode = 0
+offset_left = 14.0
+offset_right = 1095.0
+offset_bottom = 48.0
+text = "Don't press the button!"
+label_settings = SubResource("LabelSettings_f5scs")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ButtonArea" type="ReferenceRect" parent="Bomb"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -511.5
+offset_top = -161.0
+offset_right = 516.5
+offset_bottom = 261.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Score" type="Label" parent="Bomb"]
+layout_mode = 0
+offset_left = 994.0
+offset_top = -5.0
+offset_right = 1113.0
+offset_bottom = 49.0
+text = "100"
+label_settings = SubResource("LabelSettings_h5gun")
+horizontal_alignment = 2
+
+[node name="Timer" type="TextureProgressBar" parent="Bomb"]
+layout_mode = 0
+offset_left = 239.0
+offset_top = 50.0
+offset_right = 859.0
+offset_bottom = 88.0
+step = 0.01
+value = 100.0
+texture_progress = SubResource("GradientTexture2D_bcpea")
+script = ExtResource("4_aeiwt")
+
+[node name="Timer" type="Timer" parent="Bomb/Timer"]
+one_shot = true
+
+[connection signal="timeout" from="Bomb/Timer" to="Bomb" method="_on_timer_timeout"]
+[connection signal="timeout" from="Bomb/Timer/Timer" to="Bomb/Timer" method="_on_timer_timeout"]

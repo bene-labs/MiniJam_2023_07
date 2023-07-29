@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://c3iiln68t23k2"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pckpa"]
+bg_color = Color(0.94902, 0.266667, 0.219608, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rgeal"]
+bg_color = Color(0.870588, 0.101961, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tsmwy"]
+bg_color = Color(0.627451, 0.0392157, 0.113725, 1)
+
+[node name="SingleButton" type="Button"]
+offset_right = 57.0
+offset_bottom = 49.0
+theme_override_styles/normal = SubResource("StyleBoxFlat_pckpa")
+theme_override_styles/hover = SubResource("StyleBoxFlat_rgeal")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_tsmwy")
