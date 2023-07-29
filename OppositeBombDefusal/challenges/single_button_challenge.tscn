@@ -6,3 +6,5 @@
 [node name="SingleButtonChallenge" type="Node2D"]
 script = ExtResource("1_56qh7")
 button = ExtResource("2_3uwwo")
+pressPrompts = Array[String](["Don't press the Button!", "Leave the button unpressed!", "Don't not not press the Button!"])
+dontPressPrompts = Array[String](["Press the Button!", "Don't not press the button!", "You mustn't not press the button!"])
