@@ -2,7 +2,7 @@ extends "res://scripts/Challenge.gd"
 
 const BombButton = preload("res://scripts/BombButton.gd")
 
-@export var button : PackedScene
+@export var buttons : Array[PackedScene]
 @export var pressPrompts : Array[String] = ["Don't press the Button!"]
 @export var dontPressPrompts : Array[String] = ["Press the Button!"]
 
@@ -13,7 +13,7 @@ func setup(buttonArea : ReferenceRect, instructionLabel : Label):
 	
 	var shouldPress = true if randi() % 2 == 1 else false
 	
-	activeButton = button.instantiate()
+	activeButton = buttons[randi() % buttons.size()].instantiate()
 	buttonArea.add_child(activeButton)
 	activeButton.set_position(Vector2(
 		randf_range(0, buttonArea.get_rect().size.x - activeButton.get_rect().size.x),

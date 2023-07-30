@@ -1,0 +1,22 @@
+[gd_scene load_steps=7 format=3 uid="uid://c0wvrsx1q1arq"]
+
+[ext_resource type="Texture2D" uid="uid://chyufxlags8eh" path="res://art/button_round_yellow_NORMAL.png" id="1_16fep"]
+[ext_resource type="Texture2D" uid="uid://c8wigd4k5m1eb" path="res://art/button_round_yellow_PRESS.png" id="2_oehkq"]
+[ext_resource type="Script" path="res://scripts/BombButton.gd" id="3_vdyfb"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_3qase"]
+texture = ExtResource("1_16fep")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_wavkp"]
+texture = ExtResource("1_16fep")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_poqb2"]
+texture = ExtResource("2_oehkq")
+
+[node name="SingleButton" type="Button"]
+offset_right = 72.0
+offset_bottom = 68.0
+theme_override_styles/normal = SubResource("StyleBoxTexture_3qase")
+theme_override_styles/hover = SubResource("StyleBoxTexture_wavkp")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_poqb2")
+script = ExtResource("3_vdyfb")

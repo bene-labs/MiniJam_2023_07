@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://dklxje6sf02bh"]
+
+[ext_resource type="Script" path="res://MultiButtonChallenge.gd" id="1_db7ob"]
+
+[node name="MultiButtonChallenge" type="Node2D"]
+script = ExtResource("1_db7ob")
+buttons = null
+pressPrompts = null
+dontPressPrompts = null
+minButtons = null
+maxButtons = null

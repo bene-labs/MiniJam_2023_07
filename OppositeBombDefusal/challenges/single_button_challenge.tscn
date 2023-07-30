@@ -1,10 +1,13 @@
-[gd_scene load_steps=3 format=3 uid="uid://crj81icqlrl34"]
+[gd_scene load_steps=6 format=3 uid="uid://crj81icqlrl34"]
 
 [ext_resource type="Script" path="res://SingleButtonChallenge.gd" id="1_56qh7"]
-[ext_resource type="PackedScene" uid="uid://c3iiln68t23k2" path="res://single_button.tscn" id="2_3uwwo"]
+[ext_resource type="PackedScene" uid="uid://cesb46oul41h6" path="res://buttons/button_square.tscn" id="2_xm04n"]
+[ext_resource type="PackedScene" uid="uid://be3t0pv2x4r5h" path="res://buttons/button_purple.tscn" id="3_lkp8b"]
+[ext_resource type="PackedScene" uid="uid://c3iiln68t23k2" path="res://buttons/single_button.tscn" id="4_5sj4i"]
+[ext_resource type="PackedScene" uid="uid://c0wvrsx1q1arq" path="res://buttons/button_yellow.tscn" id="5_8stqo"]
 
 [node name="SingleButtonChallenge" type="Node2D"]
 script = ExtResource("1_56qh7")
-button = ExtResource("2_3uwwo")
-pressPrompts = Array[String](["Don't press the Button!", "Leave the button unpressed!", "Don't not not press the Button!"])
-dontPressPrompts = Array[String](["Press the Button!", "Don't not press the button!", "You mustn't not press the button!"])
+buttons = Array[PackedScene]([ExtResource("2_xm04n"), ExtResource("3_lkp8b"), ExtResource("4_5sj4i"), ExtResource("5_8stqo")])
+pressPrompts = Array[String](["Don't press the Button!", "Leave the button unpressed!", "Don't not not press the Button!", "If the Button is not pressed yet, don't press it.", "Never press the button!", "Do not press the button!", "You shall not press the button!", "It is forbidden to press the button!"])
+dontPressPrompts = Array[String](["Press the Button!", "Don't not press the button!", "You mustn't not press the button!", "Press the damn button!", "Don't even think about not pressing the button!", "if every letter in this sentence is not upper-case, press the button!", "If there is a button, press it!", "Press the button if you want to live!"])

@@ -1,49 +1,99 @@
-[gd_scene load_steps=10 format=3 uid="uid://st0x0js1gcut"]
+[gd_scene load_steps=17 format=3 uid="uid://st0x0js1gcut"]
 
 [ext_resource type="Script" path="res://game.gd" id="1_hykuy"]
 [ext_resource type="Script" path="res://Bomb.gd" id="2_t60ak"]
+[ext_resource type="Texture2D" uid="uid://cwu4olfx25wqx" path="res://art/EXPLODE.png" id="2_uvb8y"]
+[ext_resource type="AudioStream" uid="uid://dov33ags28ldp" path="res://art/explosion_01-6225 (1).mp3" id="3_1t81l"]
 [ext_resource type="PackedScene" uid="uid://crj81icqlrl34" path="res://challenges/single_button_challenge.tscn" id="3_ty3vx"]
 [ext_resource type="Script" path="res://Timer.gd" id="4_aeiwt"]
 [ext_resource type="Texture2D" uid="uid://b7nipcqcmj86q" path="res://art/bomb_base_flat.png" id="4_knda7"]
+[ext_resource type="PackedScene" uid="uid://cesb46oul41h6" path="res://buttons/button_square.tscn" id="4_rshud"]
+[ext_resource type="Texture2D" uid="uid://b1nv7aeop5pt1" path="res://art/YOU_DIED.png" id="5_716w2"]
+[ext_resource type="Texture2D" uid="uid://qrko3kp7ys65" path="res://art/diffuse_icon_1.png" id="6_1k5d4"]
+[ext_resource type="AudioStream" uid="uid://cqqpdgcnua1pr" path="res://art/BombDiffuseParty.wav" id="11_sam4i"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_gfga0"]
+font_size = 63
 
 [sub_resource type="LabelSettings" id="LabelSettings_f5scs"]
 font_size = 32
-
-[sub_resource type="LabelSettings" id="LabelSettings_h5gun"]
-font_size = 42
 
 [sub_resource type="Gradient" id="Gradient_dixx2"]
 colors = PackedColorArray(0.709804, 0.054902, 0, 1, 0.338907, 0.71, 0.3124, 1)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_bcpea"]
 gradient = SubResource("Gradient_dixx2")
-width = 620
-height = 38
+width = 800
+height = 50
+
+[sub_resource type="LabelSettings" id="LabelSettings_h5gun"]
+font_size = 48
 
 [node name="Game" type="Node2D"]
 script = ExtResource("1_hykuy")
 
-[node name="Bomb" type="Control" parent="."]
+[node name="GameOver" type="Control" parent="."]
+visible = false
 layout_mode = 3
 anchors_preset = 0
 offset_left = 5.0
 offset_top = 1.0
-offset_right = 1152.0
-offset_bottom = 645.0
+offset_right = 1289.0
+offset_bottom = 730.0
+
+[node name="Sprite2D" type="Sprite2D" parent="GameOver"]
+position = Vector2(640.5, 360.5)
+scale = Vector2(0.673438, 0.682407)
+texture = ExtResource("2_uvb8y")
+
+[node name="LoseSound" type="AudioStreamPlayer2D" parent="GameOver"]
+stream = ExtResource("3_1t81l")
+
+[node name="RestartButton" parent="GameOver" instance=ExtResource("4_rshud")]
+layout_mode = 0
+offset_left = 503.0
+offset_top = 528.0
+offset_right = 783.0
+offset_bottom = 626.0
+disabled = true
+
+[node name="Label" type="Label" parent="GameOver/RestartButton"]
+layout_mode = 0
+offset_top = -8.0
+offset_right = 274.0
+offset_bottom = 93.0
+text = "GIVE UP"
+label_settings = SubResource("LabelSettings_gfga0")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Sprite2D2" type="Sprite2D" parent="GameOver"]
+position = Vector2(631, 191)
+texture = ExtResource("5_716w2")
+
+[node name="Bomb" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 9.0
+offset_right = 1285.0
+offset_bottom = 717.0
 script = ExtResource("2_t60ak")
 challenges = Array[PackedScene]([ExtResource("3_ty3vx")])
 time_limit = 5.0
-time_limit_scale = 0.95
+time_limit_scale = 0.96
 
 [node name="Sprite2D" type="Sprite2D" parent="Bomb"]
-position = Vector2(577.5, 374.5)
-scale = Vector2(0.753695, 0.627586)
+position = Vector2(629.5, 404.5)
+scale = Vector2(0.826883, 0.710345)
 texture = ExtResource("4_knda7")
 
 [node name="Instruction" type="Label" parent="Bomb"]
-layout_mode = 0
-offset_left = 14.0
-offset_right = 1095.0
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -0.018
+anchor_right = -0.018
+offset_left = 18.968
+offset_right = 1297.97
 offset_bottom = 48.0
 text = "Don't press the button!"
 label_settings = SubResource("LabelSettings_f5scs")
@@ -57,30 +107,20 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -511.5
-offset_top = -161.0
-offset_right = 517.5
-offset_bottom = 258.0
+offset_left = -572.0
+offset_top = -189.5
+offset_right = 546.0
+offset_bottom = 279.5
 grow_horizontal = 2
 grow_vertical = 2
 border_width = 1.7
 
-[node name="Score" type="Label" parent="Bomb"]
-layout_mode = 0
-offset_left = 994.0
-offset_top = -5.0
-offset_right = 1113.0
-offset_bottom = 49.0
-text = "100"
-label_settings = SubResource("LabelSettings_h5gun")
-horizontal_alignment = 2
-
 [node name="Timer" type="TextureProgressBar" parent="Bomb"]
 layout_mode = 0
-offset_left = 239.0
-offset_top = 50.0
-offset_right = 859.0
-offset_bottom = 89.0
+offset_left = 247.0
+offset_top = 58.0
+offset_right = 1049.0
+offset_bottom = 108.0
 step = 0.01
 value = 100.0
 texture_progress = SubResource("GradientTexture2D_bcpea")
@@ -89,5 +129,33 @@ script = ExtResource("4_aeiwt")
 [node name="Timer" type="Timer" parent="Bomb/Timer"]
 one_shot = true
 
+[node name="ColorRect" type="ColorRect" parent="."]
+modulate = Color(1, 1, 1, 0.470588)
+offset_left = 1096.0
+offset_top = 3.0
+offset_right = 1278.0
+offset_bottom = 113.0
+color = Color(0.407843, 0.407843, 0.407843, 1)
+
+[node name="Score" type="Label" parent="."]
+offset_left = 1089.0
+offset_top = 27.0
+offset_right = 1185.0
+offset_bottom = 97.0
+text = "100"
+label_settings = SubResource("LabelSettings_h5gun")
+horizontal_alignment = 2
+
+[node name="DefuseIcon" type="Sprite2D" parent="."]
+position = Vector2(1228.63, 63.875)
+scale = Vector2(0.786037, 0.808823)
+texture = ExtResource("6_1k5d4")
+
+[node name="BackgroundMusic" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("11_sam4i")
+autoplay = true
+
+[connection signal="pressed" from="GameOver/RestartButton" to="." method="_on_restart_button_pressed"]
+[connection signal="gameover" from="Bomb" to="." method="_on_bomb_gameover"]
 [connection signal="timeout" from="Bomb/Timer" to="Bomb" method="_on_timer_timeout"]
 [connection signal="timeout" from="Bomb/Timer/Timer" to="Bomb/Timer" method="_on_timer_timeout"]

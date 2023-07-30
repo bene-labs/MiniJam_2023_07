@@ -1,0 +1,78 @@
+[gd_scene load_steps=15 format=3 uid="uid://cbywndd1usuo7"]
+
+[ext_resource type="Texture2D" uid="uid://b7nipcqcmj86q" path="res://art/bomb_base_flat.png" id="1_uilbd"]
+[ext_resource type="Script" path="res://challenges/main_menu.gd" id="1_wlxjx"]
+[ext_resource type="Texture2D" uid="uid://dxfjirils28iq" path="res://art/button_square_YES_NORMAL.png" id="2_j5336"]
+[ext_resource type="Texture2D" uid="uid://c16464aohi03h" path="res://art/button_square_YES_PRESSED.png" id="3_gdp55"]
+[ext_resource type="Texture2D" uid="uid://5lkb20uxcioo" path="res://art/button_square_NO_NORMAL.png" id="5_srepq"]
+[ext_resource type="Texture2D" uid="uid://d058n03cbg4ih" path="res://art/button_square_NO_PRESSED.png" id="6_3jcb1"]
+[ext_resource type="Texture2D" uid="uid://cv8sch21dgvqt" path="res://art/LOGO.png" id="7_5samm"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_qwxtx"]
+texture = ExtResource("2_j5336")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_si1qd"]
+texture = ExtResource("2_j5336")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_a3e4t"]
+texture = ExtResource("3_gdp55")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_q1fv8"]
+texture = ExtResource("5_srepq")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_7qd63"]
+texture = ExtResource("5_srepq")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_sqmf1"]
+texture = ExtResource("6_3jcb1")
+
+[sub_resource type="LabelSettings" id="LabelSettings_1i6g1"]
+font_size = 100
+
+[node name="MainMenu" type="Node2D"]
+script = ExtResource("1_wlxjx")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_right = 1277.0
+offset_bottom = 720.0
+color = Color(0.329412, 0.329412, 0.329412, 1)
+
+[node name="BombBaseFlat" type="Sprite2D" parent="."]
+position = Vector2(641.5, 359.5)
+scale = Vector2(0.901478, 0.994483)
+texture = ExtResource("1_uilbd")
+
+[node name="Button" type="Button" parent="."]
+offset_left = 251.0
+offset_top = 504.0
+offset_right = 492.0
+offset_bottom = 627.0
+theme_override_styles/normal = SubResource("StyleBoxTexture_qwxtx")
+theme_override_styles/hover = SubResource("StyleBoxTexture_si1qd")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_a3e4t")
+
+[node name="StartButton" type="Button" parent="."]
+offset_left = 745.0
+offset_top = 506.0
+offset_right = 986.0
+offset_bottom = 629.0
+theme_override_styles/normal = SubResource("StyleBoxTexture_q1fv8")
+theme_override_styles/hover = SubResource("StyleBoxTexture_7qd63")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_sqmf1")
+
+[node name="Label" type="Label" parent="."]
+offset_left = 11.0
+offset_top = 292.0
+offset_right = 1271.0
+offset_bottom = 450.0
+text = "Do the opposite!"
+label_settings = SubResource("LabelSettings_1i6g1")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Logo" type="Sprite2D" parent="."]
+position = Vector2(625, 158)
+scale = Vector2(0.412352, 0.332512)
+texture = ExtResource("7_5samm")
+
+[connection signal="pressed" from="StartButton" to="." method="_on_start_button_pressed"]

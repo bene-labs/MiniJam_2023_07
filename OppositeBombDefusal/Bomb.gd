@@ -16,11 +16,13 @@ var currentChallenge : Challenge
 
 var score = 0
 
+signal gameover
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	instruction = get_node("Instruction")
 	buttonArea = get_node("ButtonArea")
-	scoreText = get_node("Score")
+	scoreText = $"../Score"
 	timer = get_node("Timer")
 	scoreText.text = str(score)
 	randomize()
@@ -50,7 +52,7 @@ func _on_timer_timeout():
 		_on_challenge_failed()
 		
 func _on_challenge_failed():
-	get_tree().reload_current_scene()
+	emit_signal("gameover")
 
 func _on_challenge_completed():
 	score += 1
